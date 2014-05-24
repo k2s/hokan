@@ -337,7 +337,8 @@ define([
 				dfd.resolve(true);
 			};
 			request.onupgradeneeded = function (event) {
-				var db = event.currentTarget.result;
+				var target = event.currentTarget || event.target;
+				var db = target.result;
 				if (db.objectStoreNames.contains(this.name)) {
 					db.deleteObjectStore(this.name);
 				}
@@ -469,7 +470,8 @@ define([
 			//		a custom structure with indexes, or the 'upgradeneeded' event could be listened to in order
 			//		to provide custom indexes on the object store.
 
-			var db = event.currentTarget.result;
+			var target = event.currentTarget || event.target;
+			var db = target.result;
 			if (!db.objectStoreNames.contains(this.name)) {
 				db.createObjectStore(this.name, { keyPath: this.idProperty });
 			}
