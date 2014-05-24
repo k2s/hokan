@@ -26,7 +26,7 @@
   ],
   "homepage": "https://github.com/kitsonk/hokan/",
   "readmeFilename": "README.md",
-  "dojoBuild": "profile.js",
+  "dojoBuild": "package.js",
   "dependencies": {
     "dojo": ">1.7"
   },
