@@ -50,7 +50,7 @@ define([
 					if (query(cursor.value)) {
 						results.push(cursor.value);
 					}
-					cursor.continue();
+					cursor['continue']();
 				}
 				else {
 					dfd.resolve(results);

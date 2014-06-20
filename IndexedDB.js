@@ -10,6 +10,7 @@ define([
 ], function (declare, lang, Deferred, Evented, queryResults, when, idbQueryEngine, util) {
 
 	var idb = window.indexedDB || window.mozIndexedDB || window.webkitIndexedDB || window.msIndexedDB;
+//    idb = window.shimIndexedDB;
 
 	return declare(Evented, {
 		// summary:
@@ -202,7 +203,7 @@ define([
 			var self = this,
 				dfd = new Deferred();
 
-			var request = this.db.transaction([ this.name ], 'readwrite').objectStore(this.name).delete(id);
+			var request = this.db.transaction([ this.name ], 'readwrite').objectStore(this.name)['delete'](id);
 			request.onerror = function (event) {
 				self.emit('error', event);
 				dfd.resolve(event);
