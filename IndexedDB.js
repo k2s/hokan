@@ -10,6 +10,9 @@ define([
 ], function (declare, lang, Deferred, Evented, queryResults, when, idbQueryEngine, util) {
 
 	var idb = window.indexedDB || window.mozIndexedDB || window.webkitIndexedDB || window.msIndexedDB;
+	if (!idb) {
+		idb = window.shimIndexedDB;
+	}
 //    idb = window.shimIndexedDB;
 
 	return declare(Evented, {
